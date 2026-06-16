@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perla Academy — Маркетингова стратегія</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap');
+
+  :root {
+    --bg: #0B0F1A;
+    --bg2: #111827;
+    --bg3: #1a2235;
+    --accent: #4ECDC4;
+    --accent2: #A78BFA;
+    --accent3: #F59E0B;
+    --red: #F87171;
+    --green: #34D399;
+    --text: #F1F5F9;
+    --muted: #94A3B8;
+    --border: rgba(255,255,255,0.08);
+    --card: rgba(255,255,255,0.04);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,15,26,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 100px 40px 80px; max-width: 1100px; margin: 0 auto; }
+  section:first-of-type { padding-top: 140px; }
+
+  .section-divider {
+    border: none; border-top: 1px solid var(--border);
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  /* HERO */
+  .hero { text-align: center; padding-top: 160px; padding-bottom: 100px; }
+  .hero-eyebrow {
+    display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
+    border: 1px solid rgba(78,205,196,.3); border-radius: 20px; padding: 6px 16px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 900; line-height: 1.1;
+    background: linear-gradient(135deg, #F1F5F9 0%, var(--accent) 60%, var(--accent2) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 24px;
+  }
+  .hero-sub { font-size: 18px; color: var(--muted); max-width: 560px; margin: 0 auto 48px; }
+  .hero-meta { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .hero-meta-item { text-align: center; }
+  .hero-meta-item strong { display: block; font-size: 28px; font-weight: 700; color: var(--accent); }
+  .hero-meta-item span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+  /* PROBLEM */
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 48px; }
+  .problem-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+    border-left: 3px solid var(--red);
+  }
+  .problem-card h4 { font-size: 14px; font-weight: 600; color: var(--red); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .06em; }
+  .problem-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* SECTION HEADERS */
+  .section-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-lead { font-size: 17px; color: var(--muted); max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
+
+  /* SEGMENTS */
+  .segments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+  .segment-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px; position: relative; overflow: hidden;
+    transition: transform .2s, border-color .2s;
+  }
+  .segment-card:hover { transform: translateY(-3px); border-color: rgba(78,205,196,.3); }
+  .segment-card.top { border-top: 3px solid var(--accent); }
+  .segment-card.second { border-top: 3px solid var(--accent2); }
+  .segment-card.third { border-top: 3px solid var(--accent3); }
+  .seg-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+    padding: 4px 10px; border-radius: 20px; margin-bottom: 14px;
+  }
+  .seg-badge.top { background: rgba(78,205,196,.15); color: var(--accent); }
+  .seg-badge.second { background: rgba(167,139,250,.15); color: var(--accent2); }
+  .seg-badge.third { background: rgba(245,158,11,.15); color: var(--accent3); }
+  .seg-badge.neutral { background: rgba(255,255,255,.08); color: var(--muted); }
+  .segment-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .segment-card .seg-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
+  .seg-stats { display: flex; gap: 16px; flex-wrap: wrap; }
+  .seg-stat { font-size: 12px; }
+  .seg-stat .label { color: var(--muted); margin-bottom: 2px; }
+  .seg-stat .val { font-weight: 600; }
+  .val.high { color: var(--green); }
+  .val.mid { color: var(--accent3); }
+  .val.low { color: var(--red); }
+
+  /* OFFER */
+  .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+  .offer-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+    transition: transform .2s;
+  }
+  .offer-card:hover { transform: translateY(-2px); }
+  .offer-segment { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin-bottom: 10px; }
+  .offer-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-style: italic; color: var(--text);
+    line-height: 1.7; margin-bottom: 16px;
+    padding: 16px; background: rgba(78,205,196,.06);
+    border-left: 2px solid var(--accent); border-radius: 4px;
+  }
+  .offer-note { font-size: 13px; color: var(--muted); }
+
+  /* FUNNEL */
+  .funnel-wrap { margin-top: 48px; }
+  .funnel-step {
+    display: grid; grid-template-columns: 48px 1fr auto;
+    gap: 20px; align-items: start; margin-bottom: 8px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px 24px;
+    transition: border-color .2s;
+  }
+  .funnel-step:hover { border-color: rgba(78,205,196,.25); }
+  .funnel-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; flex-shrink: 0;
+    background: rgba(78,205,196,.15); color: var(--accent);
+  }
+  .funnel-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .funnel-content p { font-size: 13px; color: var(--muted); }
+  .funnel-kpi { text-align: right; flex-shrink: 0; }
+  .funnel-kpi .kpi-val { font-size: 17px; font-weight: 700; color: var(--accent); }
+  .funnel-kpi .kpi-label { font-size: 11px; color: var(--muted); }
+
+  /* CREATIVES */
+  .creatives-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .creative-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px;
+    transition: transform .2s;
+  }
+  .creative-card:hover { transform: translateY(-2px); }
+  .creative-icon { font-size: 28px; margin-bottom: 14px; }
+  .creative-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+  .creative-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .creative-example {
+    margin-top: 12px; padding: 12px; background: rgba(255,255,255,.04);
+    border-radius: 8px; font-size: 12px; color: var(--accent); font-style: italic;
+  }
+
+  /* ANALYTICS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .kpi-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px; text-align: center;
+  }
+  .kpi-card .big { font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .kpi-card .metric { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .kpi-card .target { font-size: 12px; color: var(--muted); }
+
+  /* TIMELINE */
+  .timeline { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+  .timeline-item {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 24px; align-items: start;
+  }
+  .timeline-month {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 16px; text-align: center;
+  }
+  .timeline-month .mo { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .timeline-month .mo-label { font-size: 15px; font-weight: 700; color: var(--text); }
+  .timeline-month .budget { font-size: 12px; color: var(--accent); margin-top: 4px; }
+  .timeline-body {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px;
+  }
+  .timeline-body h4 { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+  .timeline-body ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .timeline-body li { font-size: 13px; color: var(--muted); display: flex; gap: 8px; }
+  .timeline-body li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .timeline-result {
+    margin-top: 12px; padding: 10px 14px;
+    background: rgba(52,211,153,.08); border-radius: 8px;
+    font-size: 13px; color: var(--green); font-weight: 500;
+  }
+
+  /* CHECKLIST */
+  .checklist-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+  .checklist-group h4 {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--muted); margin-bottom: 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist-group ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .checklist-group li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px; line-height: 1.5;
+  }
+  .check-box {
+    width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0; margin-top: 1px;
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+    cursor: pointer; transition: background .2s;
+  }
+  .check-box.done { background: var(--green); }
+  .check-box.todo { background: var(--card); border: 1.5px solid var(--border); }
+  .check-box.todo:hover { border-color: var(--accent); }
+
+  /* MATH */
+  .math-block {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 20px; padding: 40px; margin-top: 48px;
+  }
+  .math-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .math-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .math-label { font-size: 14px; color: var(--muted); }
+  .math-val { font-size: 16px; font-weight: 700; }
+  .math-total { background: rgba(78,205,196,.1); border-radius: 12px; padding: 20px 24px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .math-total .t-label { font-size: 14px; font-weight: 600; }
+  .math-total .t-val { font-size: 24px; font-weight: 700; color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 60px 40px;
+    border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px;
+  }
+  footer strong { color: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 80px 20px 60px; }
+    .problem-grid, .segments-grid, .offer-grid, .creatives-grid, .kpi-grid, .checklist-cols { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Perla Academy</div>
+  <div class="nav-links">
+    <a href="#problem">Проблема</a>
+    <a href="#audience">Аудиторія</a>
+    <a href="#offer">Оффер</a>
+    <a href="#funnel">Воронка</a>
+    <a href="#creatives">Креативи</a>
+    <a href="#analytics">Аналітика</a>
+    <a href="#checklist">Чекліст</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Маркетингова стратегія 2025</div>
+  <h1>Perla Academy<br>— новий старт</h1>
+  <p class="hero-sub">Покрокова стратегія запуску таргетованої реклами, яка окупається з першого місяця</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <strong>$500</strong>
+      <span>Стартовий бюджет</span>
+    </div>
+    <div class="hero-meta-item">
+      <strong>5</strong>
+      <span>Блоків стратегії</span>
+    </div>
+    <div class="hero-meta-item">
+      <strong>7+</strong>
+      <span>Сегментів аудиторії</span>
+    </div>
+    <div class="hero-meta-item">
+      <strong>3 міс</strong>
+      <span>До стабільного ROAS</span>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-tag">Діагностика</div>
+  <h2>Чому таргет<br>не окупався</h2>
+  <p class="section-lead">Пів року витрат без результату — не провина бюджету. Це три структурні проблеми, які можна виправити.</p>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <h4>Розмита аудиторія</h4>
+      <p>Реклама одночасно на "дорослі загальна" і "кар'єра" — два різні продукти з різними болями. Меседж не резонує ні з ким конкретно.</p>
+    </div>
+    <div class="problem-card">
+      <h4>Слабкий оффер</h4>
+      <p>"Якісне навчання з викладачем" є у кожної з 500+ шкіл. Для холодної аудиторії потрібен конкретний результат через конкретний час.</p>
+    </div>
+    <div class="problem-card">
+      <h4>Дірава воронка</h4>
+      <p>Реклама → профіль → "пиши в директ" — кожен крок, де людина має сама діяти, це 50–80% втрати. Більшість просто не написала.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- AUDIENCE -->
+<section id="audience">
+  <div class="section-tag">Блок 1 — Аудиторія</div>
+  <h2>Сегменти з потенціалом</h2>
+  <p class="section-lead">З 7 проаналізованих сегментів виділили пріоритетні — з сильним болем, низькою конкуренцією і готовністю платити.</p>
+
+  <div class="segments-grid">
+
+    <div class="segment-card top">
+      <div class="seg-badge top">⭐ Пріоритет №1</div>
+      <h3>Переїзд та адаптація за кордоном</h3>
+      <p class="seg-desc">Українці в Польщі, Ірландії, Канаді, Великій Британії. Живий біль щодня: лікар, орендодавець, роботодавець, батьківські збори в школі — всі англійською. 2,5 млн+ тільки в Польщі.</p>
+      <div class="seg-stats">
+        <div class="seg-stat"><div class="label">Біль</div><div class="val high">Дуже сильний</div></div>
+        <div class="seg-stat"><div class="label">Конкуренція</div><div class="val high">Низька</div></div>
+        <div class="seg-stat"><div class="label">Готовність платити</div><div class="val high">Висока</div></div>
+      </div>
+    </div>
+
+    <div class="segment-card top">
+      <div class="seg-badge top">⭐ Пріоритет №1</div>
+      <h3>Медики та медсестри</h3>
+      <p class="seg-desc">Лікарі та медсестри, що планують роботу в ЄС/Канаді. Мова = різниця між $800 і $3000/міс. Потребують підготовки до IELTS/OET. Аудиторія точно таргетується.</p>
+      <div class="seg-stats">
+        <div class="seg-stat"><div class="label">Біль</div><div class="val high">Дуже сильний</div></div>
+        <div class="seg-stat"><div class="label">Конкуренція</div><div class="val high">2–3 гравці</div></div>
+        <div class="seg-stat"><div class="label">Готовність платити</div><div class="val high">Дуже висока</div></div>
+      </div>
+    </div>
+
+    <div class="segment-card second">
+      <div class="seg-badge second">▲ Пріоритет №2</div>
+      <h3>Фрілансери / діджитал (не IT)</h3>
+      <p class="seg-desc">Дизайнери, копірайтери, SMM, таргетологи — хочуть клієнтів з Upwork, але губляться на дзвінках. +35% фрілансерів на міжнародних платформах у 2024. Нульова конкуренція у вузькій ніші.</p>
+      <div class="seg-stats">
+        <div class="seg-stat"><div class="label">Біль</div><div class="val high">Сильний</div></div>
+        <div class="seg-stat"><div class="label">Конкуренція</div><div class="val high">Нульова</div></div>
+        <div class="seg-stat"><div class="label">Таргетинг</div><div class="val high">Точний</div></div>
+      </div>
+    </div>
+
+    <div class="segment-card second">
+      <div class="seg-badge second">▲ Пріоритет №2</div>
+      <h3>Мами / жінки після паузи</h3>
+      <p class="seg-desc">28–42 роки, час вдень, хочуть повернутися до кар'єри або адаптуватися за кордоном. Купують у людей, яким довіряють. Нульова конкуренція в цьому позиціонуванні.</p>
+      <div class="seg-stats">
+        <div class="seg-stat"><div class="label">Біль</div><div class="val mid">Помірний</div></div>
+        <div class="seg-stat"><div class="label">Конкуренція</div><div class="val high">Нульова</div></div>
+        <div class="seg-stat"><div class="label">Лояльність</div><div class="val high">Дуже висока</div></div>
+      </div>
+    </div>
+
+    <div class="segment-card third">
+      <div class="seg-badge third">→ Майбутнє</div>
+      <h3>Власники малого бізнесу</h3>
+      <p class="seg-desc">ФОПи та підприємці, що хочуть вийти на ринки ЄС. Мова = нові партнери та клієнти. Готовність платити висока, але потребує окремого продукту.</p>
+      <div class="seg-stats">
+        <div class="seg-stat"><div class="label">Біль</div><div class="val high">Сильний</div></div>
+        <div class="seg-stat"><div class="label">Конкуренція</div><div class="val mid">Помірна</div></div>
+        <div class="seg-stat"><div class="label">Чек</div><div class="val high">Дуже високий</div></div>
+      </div>
+    </div>
+
+    <div class="segment-card third">
+      <div class="seg-badge third">→ Майбутнє</div>
+      <h3>Підлітки 14–17 (для батьків)</h3>
+      <p class="seg-desc">Підготовка до вступу в іноземний університет. Батьки — справжні покупці. Конкуренція помірна, чек найвищий серед усіх сегментів. Потребує окремої програми.</p>
+      <div class="seg-stats">
+        <div class="seg-stat"><div class="label">Хто платить</div><div class="val">Батьки</div></div>
+        <div class="seg-stat"><div class="label">Конкуренція</div><div class="val mid">Помірна</div></div>
+        <div class="seg-stat"><div class="label">Чек</div><div class="val high">Найвищий</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- OFFER -->
+<section id="offer">
+  <div class="section-tag">Блок 2 — Оффер</div>
+  <h2>Позиціонування<br>та офферні формули</h2>
+  <p class="section-lead">Не "якісна англійська з викладачем" — а конкретний результат для конкретної людини. Кожен сегмент отримує свій меседж.</p>
+
+  <div class="offer-grid">
+    <div class="offer-card">
+      <div class="offer-segment">Переїзд / Адаптація</div>
+      <div class="offer-text">"Заговори англійською в Польщі за 6 тижнів. Програма для українців, які хочуть самостійно вирішувати питання з житлом, роботою та лікарями — без перекладача."</div>
+      <div class="offer-note">Диференціатор: ми не вчимо всіх, ми вчимо українців за кордоном. Жодна велика школа не може бути такою вузькою.</div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-segment">Медики</div>
+      <div class="offer-text">"Медична англійська для українських медсестер і лікарів. Підготовка до OET і IELTS. Реальна термінологія, сценарії з пацієнтами, ділове листування."</div>
+      <div class="offer-note">Диференціатор: конкретна мета — скласти іспит і офіційно працювати в ЄС/Канаді. Вимірюваний результат = вищий чек.</div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-segment">Фрілансери</div>
+      <div class="offer-text">"Англійська для фрілансерів: продавай себе іноземним клієнтам. Zoom-дзвінки без страху, профіль на Upwork що продає, листування яке закриває угоди."</div>
+      <div class="offer-note">Диференціатор: не офісна бізнес-англійська, а програма під реальні ситуації фрілансера. Цього немає у великих шкіл.</div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-segment">Мами / Жінки</div>
+      <div class="offer-text">"Англійська для жінок, які давно хотіли, але відкладали. Без граматичних таблиць. Маленька група, підтримка, реальний результат за 2 місяці."</div>
+      <div class="offer-note">Диференціатор: атмосфера і особистий бренд засновниці. Ця аудиторія купує у людей, яким довіряє — не у брендів.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px; background: rgba(167,139,250,.08); border: 1px solid rgba(167,139,250,.2); border-radius:16px; padding:28px;">
+    <div class="section-tag" style="margin-bottom:8px;">Головний диференціатор Perla Academy</div>
+    <p style="font-size:17px; line-height:1.7; color:var(--text);">Вузька ніша (переїзд/адаптація) <span style="color:var(--accent2)">+</span> особистий бренд засновниці <span style="color:var(--accent2)">+</span> маленькі групи з увагою до кожного. Це дозволяє відрізнятись від великих шкіл, не конкурувати ціною і будувати лояльну аудиторію навіть з малим бюджетом.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FUNNEL -->
+<section id="funnel">
+  <div class="section-tag">Блок 3 — Воронка</div>
+  <h2>Нова архітектура<br>воронки продажів</h2>
+  <p class="section-lead">Замість "реклама → директ → чекай" — система, де кожен крок максимізує конверсію, а ініціатива завжди на боці школи.</p>
+
+  <div class="funnel-wrap">
+    <div class="funnel-step">
+      <div class="funnel-num">1</div>
+      <div class="funnel-content">
+        <h4>Meta Ads — відео в Instagram / Facebook</h4>
+        <p>70% бюджету на ліди, 30% на прогрів і охоплення. Вертикальне відео 9:16, обличчя засновниці в кадрі.</p>
+      </div>
+      <div class="funnel-kpi">
+        <div class="kpi-val">~50K</div>
+        <div class="kpi-label">показів/міс</div>
+      </div>
+    </div>
+
+    <div class="funnel-step">
+      <div class="funnel-num">2</div>
+      <div class="funnel-content">
+        <h4>Лід-форма прямо в Instagram</h4>
+        <p>Замість "пиши в директ" — форма з 2–3 питаннями відкривається без переходу. Конверсія в 5–10× вища за директ.</p>
+      </div>
+      <div class="funnel-kpi">
+        <div class="kpi-val">80–150</div>
+        <div class="kpi-label">лідів/міс</div>
+      </div>
+    </div>
+
+    <div class="funnel-step">
+      <div class="funnel-num">3</div>
+      <div class="funnel-content">
+        <h4>Контакт протягом 15 хвилин</h4>
+        <p>Менеджер виходить на зв'язок у Telegram/Viber — не чекає. Конверсія падає в 3–4× якщо зв'язатися через 2+ години.</p>
+      </div>
+      <div class="funnel-kpi">
+        <div class="kpi-val">60–70%</div>
+        <div class="kpi-label">відповідей</div>
+      </div>
+    </div>
+
+    <div class="funnel-step">
+      <div class="funnel-num">4</div>
+      <div class="funnel-content">
+        <h4>Кваліфікація + запис на пробний урок</h4>
+        <p>5–7 хвилин розмови про ситуацію і мету. Одразу пропонуємо конкретну дату. Не "зв'яжемось" — а "є вівторок 19:00 або середа 18:00?"</p>
+      </div>
+      <div class="funnel-kpi">
+        <div class="kpi-val">40–50%</div>
+        <div class="kpi-label">в запис</div>
+      </div>
+    </div>
+
+    <div class="funnel-step">
+      <div class="funnel-num">5</div>
+      <div class="funnel-content">
+        <h4>Структурований пробний урок</h4>
+        <p>10 хв діагностика → 30 хв демо-урок → 10 хв план і оффер. Учень виходить з відчуттям "я вже навчаюсь". Оффер з дедлайном наприкінці.</p>
+      </div>
+      <div class="funnel-kpi">
+        <div class="kpi-val">30–40%</div>
+        <div class="kpi-label">в покупку</div>
+      </div>
+    </div>
+
+    <div class="funnel-step" style="border: 1px dashed rgba(167,139,250,.4);">
+      <div class="funnel-num" style="background: rgba(167,139,250,.15); color: var(--accent2);">↩</div>
+      <div class="funnel-content">
+        <h4>Ретаргет на тих, хто не купив</h4>
+        <p>Окрема кампанія: відгуки учнів, кейси "до і після", закриття заперечень. Найдешевші конверсії — ця аудиторія вже знає школу.</p>
+      </div>
+      <div class="funnel-kpi">
+        <div class="kpi-val">×2–3</div>
+        <div class="kpi-label">дешевше ліду</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATH -->
+  <div class="math-block">
+    <div class="section-tag" style="margin-bottom:20px;">Математика воронки при $500/міс</div>
+    <div class="math-row">
+      <div class="math-label">Покази</div>
+      <div class="math-val">~50 000</div>
+    </div>
+    <div class="math-row">
+      <div class="math-label">Ліди (через форму)</div>
+      <div class="math-val">80–150</div>
+    </div>
+    <div class="math-row">
+      <div class="math-label">Записались на урок</div>
+      <div class="math-val">35–50</div>
+    </div>
+    <div class="math-row">
+      <div class="math-label">Прийшли на урок</div>
+      <div class="math-val">25–35</div>
+    </div>
+    <div class="math-row">
+      <div class="math-label">Купили (~35%)</div>
+      <div class="math-val" style="color:var(--green)">9–12 нових учнів</div>
+    </div>
+    <div class="math-total">
+      <div class="t-label">Виручка (груп, 8 уроків × 450 грн)</div>
+      <div class="t-val">32 000 – 43 000 грн</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CREATIVES -->
+<section id="creatives">
+  <div class="section-tag">Блок 4 — Креативи</div>
+  <h2>Формати реклами<br>які зупиняють скролінг</h2>
+  <p class="section-lead">У 2025 році нативність б'є красу. Обличчя засновниці в кадрі конвертує в 2–4× краще за будь-який банер. 70% бюджету — вертикальне відео.</p>
+
+  <div class="creatives-grid">
+    <div class="creative-card">
+      <div class="creative-icon">🎯</div>
+      <h4>Впізнавана ситуація</h4>
+      <p>Відкриваємо з болю аудиторії без вступу. Людина впізнає себе і зупиняється.</p>
+      <div class="creative-example">"Ти стоїш на ресепшн у Польщі, тобі щось кажуть, ти усміхаєшся і киваєш — але нічого не розумієш. Знайомо?"</div>
+    </div>
+
+    <div class="creative-card">
+      <div class="creative-icon">✨</div>
+      <h4>До і після (кейс учня)</h4>
+      <p>Реальна учениця розповідає результат. Неідеальність додає довіри. Найсильніший формат за конверсією.</p>
+      <div class="creative-example">"Через 2 місяці я пройшла співбесіду англійською і отримала роботу в Ірландії"</div>
+    </div>
+
+    <div class="creative-card">
+      <div class="creative-icon">⚡</div>
+      <h4>Мікро-урок / лайфхак</h4>
+      <p>Засновниця дає одну корисність за 30–45 сек. Аудиторія бачить компетентність і хоче більше.</p>
+      <div class="creative-example">"3 фрази для будь-якого готелю" або "Як сказати орендодавцю що щось зламалось"</div>
+    </div>
+
+    <div class="creative-card">
+      <div class="creative-icon">🔄</div>
+      <h4>Заперечення в лоб</h4>
+      <p>Засновниця одразу озвучує те, що думає аудиторія, і закриває це реальним кейсом.</p>
+      <div class="creative-example">"Думаєш, вже пізно починати в 38? Ось моя учениця Оля, їй 41 і вона вже..."</div>
+    </div>
+
+    <div class="creative-card">
+      <div class="creative-icon">📱</div>
+      <h4>Закулісся / процес</h4>
+      <p>Живий знімок уроку, реакції учнів. Не постановка — момент. Знижує тривогу перед першим кроком.</p>
+      <div class="creative-example">"Ось як виглядає наш груповий урок зсередини — 4 людини, живе мовлення, жодної граматики"</div>
+    </div>
+
+    <div class="creative-card" style="border: 1px solid rgba(78,205,196,.2); background: rgba(78,205,196,.04);">
+      <div class="creative-icon">📋</div>
+      <h4>Правила зйомки</h4>
+      <p style="color:var(--text)">📱 Телефон вертикально, природне світло</p>
+      <p style="color:var(--text); margin-top:6px">🔤 Субтитри обов'язково — 80% без звуку</p>
+      <p style="color:var(--text); margin-top:6px">⚡ Без вступу — одразу в суть з 1-ї секунди</p>
+      <p style="color:var(--text); margin-top:6px">🔄 Мінімум 3–4 різних гачки на старті</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ANALYTICS -->
+<section id="analytics">
+  <div class="section-tag">Блок 5 — Аналітика</div>
+  <h2>KPI та система<br>тестування</h2>
+  <p class="section-lead">Змінювати одну змінну за раз. Тиждень — один тест, один висновок, одна зміна. Без трекінгу $500 просто згорять.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="big">1.5–3%</div>
+      <div class="metric">CTR відео</div>
+      <div class="target">Якщо нижче 1% — міняти гачок</div>
+    </div>
+    <div class="kpi-card">
+      <div class="big">$4–8</div>
+      <div class="metric">Ціна за лід (CPL)</div>
+      <div class="target">Якщо вище $10 — міняти оффер</div>
+    </div>
+    <div class="kpi-card">
+      <div class="big">70%+</div>
+      <div class="metric">Contact Rate</div>
+      <div class="target">Якщо нижче — перевірити швидкість відповіді</div>
+    </div>
+    <div class="kpi-card">
+      <div class="big">40–50%</div>
+      <div class="metric">Запис на урок</div>
+      <div class="target">Якщо нижче — правити скрипт розмови</div>
+    </div>
+    <div class="kpi-card">
+      <div class="big">65–75%</div>
+      <div class="metric">Show Rate</div>
+      <div class="target">Нагадування за добу і за годину</div>
+    </div>
+    <div class="kpi-card">
+      <div class="big">30–40%</div>
+      <div class="metric">Trial-to-Pay</div>
+      <div class="target">Якщо нижче — проблема в уроці або оффері</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div style="margin-top:48px">
+    <div class="section-tag" style="margin-bottom:24px;">План на 3 місяці</div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-month">
+          <div class="mo">Місяць</div>
+          <div class="mo-label">1</div>
+          <div class="budget">$500</div>
+        </div>
+        <div class="timeline-body">
+          <h4>Тест гачків і аудиторій</h4>
+          <ul>
+            <li>3–4 різних відео з різними гачками (ситуація, кейс, лайфхак, заперечення)</li>
+            <li>Дві аудиторії: широка (інтереси мови) і вузька (українці за кордоном)</li>
+            <li>На 14-й день: вимикаємо що дає CTR нижче 1% або CPL вище $10</li>
+            <li>Одна лід-форма, один оффер — не міняємо до кінця місяця</li>
+          </ul>
+          <div class="timeline-result">Очікуваний результат: 5–12 нових учнів, розуміємо що резонує</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-month">
+          <div class="mo">Місяць</div>
+          <div class="mo-label">2</div>
+          <div class="budget">$500 + ретаргет</div>
+        </div>
+        <div class="timeline-body">
+          <h4>Оптимізація конверсій</h4>
+          <ul>
+            <li>Масштабуємо 1–2 переможці з першого місяця (+20–30% бюджету)</li>
+            <li>Тестуємо "до і після" з реальною ученицею першого місяця</li>
+            <li>Запускаємо ретаргет на лідів без покупки і тих, хто взаємодіяв</li>
+            <li>Аналізуємо Show Rate і Trial-to-Pay — правимо скрипт якщо потрібно</li>
+          </ul>
+          <div class="timeline-result">Очікуваний результат: 10–18 нових учнів, ROAS 2x+</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-month">
+          <div class="mo">Місяць</div>
+          <div class="mo-label">3</div>
+          <div class="budget">$700–1000</div>
+        </div>
+        <div class="timeline-body">
+          <h4>Масштабування</h4>
+          <ul>
+            <li>Масштабуємо перевірені зв'язки: аудиторія + креатив + оффер</li>
+            <li>Lookalike аудиторія на основі тих, хто купив</li>
+            <li>Тестуємо другий сегмент (фрілансери) з $100–150</li>
+            <li>Збираємо нові кейси — паливо для наступних кампаній</li>
+          </ul>
+          <div class="timeline-result">Очікуваний результат: 20–35 нових учнів, стабільний ROAS 3x+</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="section-tag">Чекліст запуску</div>
+  <h2>Що потрібно<br>зробити до старту</h2>
+  <p class="section-lead">Все що потрібно підготувати перед першим запуском реклами — розбито по блоках.</p>
+
+  <div class="checklist-cols">
+    <div class="checklist-group">
+      <h4>Стратегія і продукт</h4>
+      <ul>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Обрати 1 основний сегмент для старту (рекомендація: переїзд/адаптація)
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Сформулювати оффер під обраний сегмент (формула: хто + результат + час)
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Визначити структуру пробного уроку (10+30+10 хвилин)
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Написати скрипт першого контакту після ліду
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Визначити оффер після пробного уроку (пакет + дедлайн)
+        </li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <h4>Контент і креативи</h4>
+      <ul>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Зняти 4 відео з різними гачками (ситуація, кейс, лайфхак, заперечення)
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Додати субтитри до кожного відео
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Підготувати 2–3 статичних банери для ретаргету
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Зібрати 2–3 відгуки від учнів (текст або відео)
+        </li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <h4>Технічне налаштування</h4>
+      <ul>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Налаштувати лід-форму в Meta з 2–3 питаннями
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Підключити автоматичне сповіщення про новий лід (Telegram-бот або email)
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Встановити Pixel Meta на сайт (якщо є)
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Підготувати Google-таблицю для трекінгу лідів і конверсій
+        </li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <h4>Запуск і перший тиждень</h4>
+      <ul>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Запустити 3–4 адсети з різними креативами, $5–7/день кожен
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          На 7-й день: перевірити CTR і CPL, вимкнути аутсайдерів
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          На 14-й день: перерозподілити бюджет на переможців
+        </li>
+        <li>
+          <div class="check-box todo" onclick="this.classList.toggle('done');this.classList.toggle('todo');this.textContent=this.classList.contains('done')?'✓':''"></div>
+          Щотижня заповнювати трекер метриками воронки
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="font-size:16px; margin-bottom:8px; color:var(--text)">Perla Academy — <strong>Маркетингова стратегія 2025</strong></p>
+  <p>Підготовлено для внутрішнього використання та презентації клієнту</p>
+</footer>
+
+</body>
+</html>
