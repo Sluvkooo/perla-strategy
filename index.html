@@ -270,12 +270,83 @@
   }
   footer strong { color: var(--accent); }
 
+  /* AUDIT SECTION */
+  .audit-summary-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px;
+  }
+  .audit-stat {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; text-align: center;
+  }
+  .audit-stat .a-val { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  .audit-stat .a-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .audit-stat .a-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  .audit-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .audit-col { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+  .audit-col.good { border-top: 3px solid var(--green); }
+  .audit-col.warn { border-top: 3px solid var(--accent3); }
+  .audit-col.bad  { border-top: 3px solid var(--red); }
+  .audit-col-tag {
+    font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: 14px; padding: 4px 10px; border-radius: 20px; display: inline-block;
+  }
+  .audit-col.good .audit-col-tag { background: rgba(52,211,153,.15); color: var(--green); }
+  .audit-col.warn .audit-col-tag { background: rgba(245,158,11,.15); color: var(--accent3); }
+  .audit-col.bad  .audit-col-tag { background: rgba(248,113,113,.15); color: var(--red); }
+  .audit-col h4 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .audit-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    margin-bottom: 10px; font-size: 13px; color: var(--muted); line-height: 1.55;
+  }
+  .audit-item .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .good .dot { background: var(--green); }
+  .warn .dot { background: var(--accent3); }
+  .bad  .dot { background: var(--red); }
+
+  .audit-data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .audit-table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+  .audit-table-wrap h4 { font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+  .audit-table { width: 100%; border-collapse: collapse; }
+  .audit-table th { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; padding: 0 0 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  .audit-table td { font-size: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.04); vertical-align: middle; }
+  .audit-table td:last-child { text-align: right; }
+  .audit-table tr:last-child td { border-bottom: none; }
+  .badge-good { color: var(--green); font-weight: 700; }
+  .badge-warn { color: var(--accent3); font-weight: 700; }
+  .badge-bad  { color: var(--red); font-weight: 700; }
+
+  .creative-audit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  .creative-audit-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px;
+  }
+  .creative-audit-card .ca-name { font-size: 12px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .creative-audit-card .ca-type { font-size: 10px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-bottom: 12px; }
+  .ca-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+  .ca-row .ca-key { color: var(--muted); }
+  .ca-verdict {
+    margin-top: 12px; padding: 10px 12px; border-radius: 8px; font-size: 12px; line-height: 1.5;
+  }
+  .ca-verdict.good { background: rgba(52,211,153,.08); color: var(--green); }
+  .ca-verdict.warn { background: rgba(245,158,11,.08); color: var(--accent3); }
+  .ca-verdict.bad  { background: rgba(248,113,113,.08); color: var(--red); }
+
+  .insight-box {
+    background: rgba(78,205,196,.06); border: 1px solid rgba(78,205,196,.2);
+    border-radius: 14px; padding: 24px; margin-top: 32px;
+  }
+  .insight-box h4 { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+  .insight-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .insight-box li { font-size: 13px; color: var(--muted); display: flex; gap: 10px; }
+  .insight-box li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
     section { padding: 80px 20px 60px; }
-    .problem-grid, .segments-grid, .offer-grid, .creatives-grid, .kpi-grid, .checklist-cols { grid-template-columns: 1fr; }
+    .problem-grid, .segments-grid, .offer-grid, .creatives-grid, .kpi-grid, .checklist-cols, .audit-summary-grid, .audit-cols, .audit-data-grid, .creative-audit-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 1fr; }
     .hero h1 { font-size: 36px; }
   }
@@ -286,6 +357,7 @@
 <nav>
   <div class="nav-logo">Perla Academy</div>
   <div class="nav-links">
+    <a href="#audit">Аудит</a>
     <a href="#problem">Проблема</a>
     <a href="#audience">Аудиторія</a>
     <a href="#offer">Оффер</a>
@@ -319,6 +391,377 @@
       <span>До стабільного ROAS</span>
     </div>
   </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- AUDIT -->
+<section id="audit">
+  <div class="section-tag">Аудит попередніх запусків</div>
+  <h2>Що відбувалось<br>грудень 2025 — квітень 2026</h2>
+  <p class="section-lead">$1 672 витрачено за 5 місяців. З таргету прийшов 1 реальний клієнт. Розбираємо кожен аспект: що спрацювало, що потребує зміни, що провалилось або не тестувалось.</p>
+
+  <!-- SUMMARY STATS -->
+  <div class="audit-summary-grid">
+    <div class="audit-stat">
+      <div class="a-val" style="color:var(--red)">$1 672</div>
+      <div class="a-label">Загальний бюджет</div>
+      <div class="a-sub">грудень 2025 – квітень 2026</div>
+    </div>
+    <div class="audit-stat">
+      <div class="a-val" style="color:var(--red)">~1</div>
+      <div class="a-label">Реальних клієнтів</div>
+      <div class="a-sub">з таргетованої реклами за 5 місяців</div>
+    </div>
+    <div class="audit-stat">
+      <div class="a-val" style="color:var(--accent3)">$2.64</div>
+      <div class="a-label">Середній CPM</div>
+      <div class="a-sub">загалом по кабінету</div>
+    </div>
+    <div class="audit-stat">
+      <div class="a-val" style="color:var(--accent3)">40+</div>
+      <div class="a-label">Кампаній запущено</div>
+      <div class="a-sub">без єдиної гіпотези і системи тесту</div>
+    </div>
+  </div>
+
+  <!-- GOOD / WARN / BAD -->
+  <div class="audit-cols">
+
+    <div class="audit-col good">
+      <div class="audit-col-tag">✓ Що спрацювало</div>
+      <h4>Позитивні сигнали</h4>
+      <div class="audit-item"><div class="dot"></div><span><strong>Reels — найдешевший CPM $1.78</strong> проти $3.14 у стрічці. Алгоритм охоплює холодну аудиторію без доплати — цей плейсмент треба масштабувати.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Interest_Learning у Stories+Reels</strong> — CPR $0.05, найнижча вартість результату з усіх адсетів. Це доводить, що аудиторія "навчання" реагує найкраще.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Чоловіки 25–34</strong> дають CPC $0.17 і CPM $1.85 — найефективніший сегмент за ціною кліку, хоча більшість бюджету пішла на жінок.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Крео "ЗАСТРЯГЛИ НА РІВНІ B1?"</strong> — єдине, що містить конкретний гачок (рівень мови + проблема). Найближче до правильної структури серед усіх.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Ретаргет на взаємодію</strong> — сам факт, що він був, це плюс. Базова структура холодна+тепла аудиторія присутня.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Жінки 25–34</strong> — $622 витрат, найбільший сегмент, CTR 1.17%. Правильна ставка на основну ЦА, але без правильного меседжу конверсія не відбулась.</span></div>
+    </div>
+
+    <div class="audit-col warn">
+      <div class="audit-col-tag">⚠ Що потребує зміни</div>
+      <h4>Структурні помилки</h4>
+      <div class="audit-item"><div class="dot"></div><span><strong>Бюджет розпорошений на 40+ кампаній</strong> — жодна не накопичила достатньо даних для навчання алгоритму. Meta оптимізується ефективно від ~50 результатів на тиждень.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Занадто багато ніш одночасно</strong> — юристи, лікарі, корпоративні, загальна, фрілансери. Різні болі, різні меседжі, різні продукти — в одному кабінеті без ізоляції.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Оффер "безкоштовний check-up" і "запишись на уроки"</strong> — занадто широко. Немає конкретного результату, дедлайну чи причини діяти зараз.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Стрічка забирала $796 (48% бюджету)</strong> при CPM $3.14 vs Reels $1.78. Перерозподіл на Reels+Stories дав би на 30–40% більше охоплення за ті ж гроші.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Вік 18–24</strong> отримав $510 (30% бюджету) при CTR 0.80% — нижче за 25–34. Ця аудиторія менш готова платити за репетитора.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Гео "великі міста + вся Україна" без А/Б тесту</strong> — невідомо, яке гео конвертує краще. Регіональні кампанії запускались, але без чіткого порівняння.</span></div>
+    </div>
+
+    <div class="audit-col bad">
+      <div class="audit-col-tag">✗ Що провалилось або не робилось</div>
+      <h4>Критичні відсутності</h4>
+      <div class="audit-item"><div class="dot"></div><span><strong>Нуль текстів в оголошеннях</strong> — у всіх кампаніях без винятку. Первинний текст (primary text) — це перше що читає Meta для таргетингу і перше що бачить людина в стрічці перед зображенням.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Трафік у профіль і директ замість лід-форми</strong> — кожен крок між рекламою і контактом знижує конверсію на 50–80%. Лід-форма Meta фіксує контакт без виходу з додатку.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Жодного пікселя і конверсійного трекінгу</strong> — Meta не знала, хто конвертується в клієнта. Алгоритм оптимізувався наосліп.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>"рет 27.01" — $359 на ретаргет, 40 результатів, CPR $8.97</strong> — найдорожчий адсет в кабінеті. Великий бюджет на ретаргет без перевіреного офферу спалив третину місячного бюджету.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Відео без субтитрів і без вербального гачка в перші 3 секунди</strong> — 85% переглядів відео у Stories/Reels відбуваються без звуку. Відео-крео не мали текстового гачка на початку.</span></div>
+      <div class="audit-item"><div class="dot"></div><span><strong>Lookalike аудиторії не тестувались</strong> — за 5 місяців не було жодної LAL-аудиторії на основі тих, хто взаємодіяв або писав у директ.</span></div>
+    </div>
+
+  </div>
+
+  <!-- DATA TABLES -->
+  <div class="audit-data-grid">
+
+    <div class="audit-table-wrap">
+      <h4>Плейсменти — де гроші витрачались vs ефективність</h4>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Плейсмент</th>
+            <th>Витрати</th>
+            <th>CPM</th>
+            <th>CTR</th>
+            <th>Оцінка</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Instagram Reels</td>
+            <td>$413</td>
+            <td class="badge-good">$1.78</td>
+            <td>0.99%</td>
+            <td class="badge-good">↑ Масштабувати</td>
+          </tr>
+          <tr>
+            <td>Instagram Stories</td>
+            <td>$458</td>
+            <td>$3.23</td>
+            <td class="badge-good">1.31%</td>
+            <td class="badge-good">↑ Зберегти</td>
+          </tr>
+          <tr>
+            <td>Стрічка (Feed)</td>
+            <td>$796</td>
+            <td class="badge-warn">$3.14</td>
+            <td>0.90%</td>
+            <td class="badge-warn">→ Зменшити частку</td>
+          </tr>
+          <tr>
+            <td>Розділ «Цікаве»</td>
+            <td>$5</td>
+            <td class="badge-good">$1.30</td>
+            <td>0.84%</td>
+            <td>— Мало даних</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="audit-table-wrap">
+      <h4>Демографія — вік і стать</h4>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Сегмент</th>
+            <th>Витрати</th>
+            <th>CPM</th>
+            <th>CPC</th>
+            <th>Оцінка</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>♂ 25–34</td>
+            <td>$230</td>
+            <td class="badge-good">$1.85</td>
+            <td class="badge-good">$0.17</td>
+            <td class="badge-good">↑ Недооцінений</td>
+          </tr>
+          <tr>
+            <td>♀ 25–34</td>
+            <td>$622</td>
+            <td>$3.16</td>
+            <td>$0.27</td>
+            <td class="badge-good">✓ Основна ЦА</td>
+          </tr>
+          <tr>
+            <td>♀ 18–24</td>
+            <td>$403</td>
+            <td>$2.92</td>
+            <td>$0.36</td>
+            <td class="badge-warn">→ Обмежити</td>
+          </tr>
+          <tr>
+            <td>♂ 18–24</td>
+            <td>$107</td>
+            <td class="badge-good">$1.55</td>
+            <td class="badge-good">$0.18</td>
+            <td class="badge-warn">→ Дешево, але конверсія?</td>
+          </tr>
+          <tr>
+            <td>♀ 35–44</td>
+            <td>$164</td>
+            <td class="badge-warn">$4.08</td>
+            <td>$0.37</td>
+            <td class="badge-warn">→ Дорого, тестувати офер</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="audit-table-wrap">
+      <h4>Найкращі адсети за CPR</h4>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Адсет</th>
+            <th>Витрати</th>
+            <th>CPR</th>
+            <th>Оцінка</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Interest_Learning Stories</td>
+            <td>$44.8</td>
+            <td class="badge-good">$0.05</td>
+            <td class="badge-good">↑ Переможець</td>
+          </tr>
+          <tr>
+            <td>заг англ</td>
+            <td>$81.2</td>
+            <td class="badge-good">$0.08</td>
+            <td class="badge-good">↑ Масштабувати</td>
+          </tr>
+          <tr>
+            <td>int – ауд 1</td>
+            <td>$66.4</td>
+            <td class="badge-good">$0.11</td>
+            <td class="badge-good">↑ Сильний</td>
+          </tr>
+          <tr>
+            <td>Interest_Learning 40% Stories</td>
+            <td>$47.0</td>
+            <td class="badge-good">$0.10</td>
+            <td class="badge-good">↑ Повторити</td>
+          </tr>
+          <tr>
+            <td>сторіс+рілс гео</td>
+            <td>$102.1</td>
+            <td class="badge-good">$0.19</td>
+            <td>✓ Добре</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="audit-table-wrap">
+      <h4>Найдорожчі адсети — де спалили бюджет</h4>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Адсет</th>
+            <th>Витрати</th>
+            <th>CPR</th>
+            <th>Оцінка</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>рет 27.01</td>
+            <td class="badge-bad">$359</td>
+            <td class="badge-bad">$8.97</td>
+            <td class="badge-bad">✗ Критично</td>
+          </tr>
+          <tr>
+            <td>регіони+рекомендація чекап</td>
+            <td>$112</td>
+            <td class="badge-bad">$14.01</td>
+            <td class="badge-bad">✗ Зупинити</td>
+          </tr>
+          <tr>
+            <td>регіони+рекомендація відгуки</td>
+            <td>$137</td>
+            <td class="badge-bad">$11.38</td>
+            <td class="badge-bad">✗ Слабкий оффер</td>
+          </tr>
+          <tr>
+            <td>лікарі 1</td>
+            <td>$33.7</td>
+            <td class="badge-bad">$16.86</td>
+            <td class="badge-bad">✗ Ніша не зайшла</td>
+          </tr>
+          <tr>
+            <td>ауд 1</td>
+            <td>$30.8</td>
+            <td class="badge-bad">$15.40</td>
+            <td class="badge-bad">✗ Зупинити</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- CREATIVE AUDIT -->
+  <div style="margin-top:48px">
+    <div class="section-tag" style="margin-bottom:8px;">Аудит креативів</div>
+    <h3 style="font-family:'Playfair Display',serif; font-size:24px; margin-bottom:8px;">Що не так з поточними оголошеннями</h3>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:24px;">Проаналізовано 10 статичних і 4 відеокреативи. Жоден не використовував текст оголошення (primary text).</p>
+
+    <div class="creative-audit-grid">
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«ВСЕ ЩЕ ГОВОРИШ ПРОСТИМИ СЛОВАМИ A2?»</div>
+        <div class="ca-type">Статичний банер · Загальна аудиторія</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-warn">Слабкий</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-warn">Відсутній чіткий</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict warn">Питання є, але немає обіцянки результату. "Прокай навички" — розмито, без дедлайну і конкретики. Хто такий «перла»? Незрозуміло з першого погляду.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«ЗАСТРЯГЛИ НА РІВНІ B1?»</div>
+        <div class="ca-type">Статичний банер · Загальна аудиторія</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-good">Сильний</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-warn">Є, але слабкий</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict good">Найкраще крео з усіх — конкретний рівень, конкретна проблема (тільки simpls), є результат (B2), є ціна (450 грн), є соцдоказ (120 відгуків). Мінус — CTA "напиши B2 в Директ" вимагає дії від людини.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«Від пробного уроку до впевненого рівня»</div>
+        <div class="ca-type">Статичний банер · Загальна аудиторія</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-warn">Слабкий</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict bad">Продуктовий банер без болю і без гачка. "Від пробного до впевненого" — це про процес, не про результат. Фото дівчини в Римі не пов'язане з навчанням логічно. Немає причини клікати.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«Комфортне вивчення англійської»</div>
+        <div class="ca-type">Статичний банер · Загальна аудиторія</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-bad">Слоган без болю</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-bad">«Пиши в дірект»</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict bad">«Комфортне» — не біль. Це характеристика продукту. Ніхто не шукає «комфортну» школу — шукають результат. CTA «пиши в дірект» вимагає максимум зусиль від холодної людини.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«Це те відчуття, коли слова знаєш...»</div>
+        <div class="ca-type">Статичний банер · Загальна аудиторія</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-good">Емпатія — є</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-warn">Розмитий</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict warn">Найбільш емоційне крео — влучно описує біль мовного бар'єру. Але «ЗЛАМАЄМО БАР'ЄР» без обіцянки часу чи результату залишається гаслом. Потенційно сильне — якщо додати конкретику і лід-форму.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">Крео з профілем Instagram</div>
+        <div class="ca-type">Статичний банер · Загальна аудиторія</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-bad">«Записуйтесь до нас»</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict bad">Скріншот профілю (117 дописів, 438 читачів) — це демонстрація слабкості, а не довіри. Мала кількість підписників в рекламі підриває авторитет. Цей формат треба прибрати повністю.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«ЮРИСТ БЕЗ АНГЛІЙСЬКОЇ СЬОГОДНІ ОБМЕЖУЄ СЕБЕ»</div>
+        <div class="ca-type">Статичний банер · Юристи</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-good">Конкретна ніша</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-good">Чекап — є</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict warn">Найкраще нішеве крео. Чіткий біль («обмежує себе»), три конкретні вигоди (зарплата, кар'єра, ділове спілкування). Але всі три варіанти (чоловік, жінка в білому, жінка в кремовому) — стокові фото, не реальна людина.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«МИ ЗНАЄМО, ЩО У МЕДИКА НЕМАЄ ЧАСУ»</div>
+        <div class="ca-type">Статичний банер · Лікарі</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-good">Є заперечення</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-good">Чекап — є</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict warn">Вдало закрите заперечення «немає часу на навчання». Структура логічна. Але результат «ПОЧНЕТЕ ГОВОРИТИ» — не підкріплений часовими рамками. Ніша лікарів дала CPR $16.86 — найдорожчий сегмент.</div>
+      </div>
+
+      <div class="creative-audit-card">
+        <div class="ca-name">«ВИ РЯТУЄТЕ ЖИТТЯ, АНГЛІЙСЬКА НЕ МАЄ БУТИ СТРЕСОМ»</div>
+        <div class="ca-type">Статичний банер · Лікарі (2 варіанти)</div>
+        <div class="ca-row"><span class="ca-key">Гачок</span><span class="badge-warn">Емоційний, але розмитий</span></div>
+        <div class="ca-row"><span class="ca-key">CTA</span><span class="badge-warn">«Дізнатись більше»</span></div>
+        <div class="ca-row"><span class="ca-key">Текст оголошення</span><span class="badge-bad">Відсутній</span></div>
+        <div class="ca-verdict bad">Емпатія є, але немає нікого конкретного оферу. «Навчись легко, без тиску у власному темпі» — точно так само говорить кожна школа. CTA «дізнатись більше» — найслабший CTA для конверсії.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KEY INSIGHTS BOX -->
+  <div class="insight-box">
+    <h4>🔑 Ключові висновки для нового запуску</h4>
+    <ul>
+      <li>Додати primary text у кожне оголошення — це підвищує якість сигналу для алгоритму і дає людині контекст ще до кліку. Без тексту Meta не знає, кому показувати рекламу.</li>
+      <li>Перейти з "трафік у профіль" на лід-форму Meta — скорочення з 3 кроків до 1, конверсія зростає в 2–4 рази за тих же витрат.</li>
+      <li>Зосередити $500 на 2–3 кампаніях, а не 40+ — кожна кампанія повинна набрати 50+ результатів за тиждень для навчання алгоритму.</li>
+      <li>Reels+Stories замість Feed як основні плейсменти — CPM $1.78 проти $3.14, на 43% дешевше охоплення за ту ж аудиторію.</li>
+      <li>Прибрати одночасний запуск юристів, лікарів, корпоративних і загальних — на місяць 1 тільки один сегмент і один оффер.</li>
+      <li>Стопнути ретаргетні кампанії з великим бюджетом ($350+) до підтвердження конверсії в холодних — ретаргет без якісного холодного трафіку лише гріє тих, хто не купить.</li>
+    </ul>
+  </div>
+
 </section>
 
 <hr class="section-divider">
@@ -358,7 +801,7 @@
     <div class="segment-card top">
       <div class="seg-badge top">⭐ Пріоритет №1</div>
       <h3>Переїзд та адаптація за кордоном</h3>
-      <p class="seg-desc">Українці в англомовних країнах, Ірландії, Канаді, Великій Британії. Живий біль щодня: лікар, орендодавець, роботодавець, батьківські збори в школі — всі англійською. </p>
+      <p class="seg-desc">Українці в Польщі, Ірландії, Канаді, Великій Британії. Живий біль щодня: лікар, орендодавець, роботодавець, батьківські збори в школі — всі англійською. 2,5 млн+ тільки в Польщі.</p>
       <div class="seg-stats">
         <div class="seg-stat"><div class="label">Біль</div><div class="val high">Дуже сильний</div></div>
         <div class="seg-stat"><div class="label">Конкуренція</div><div class="val high">Низька</div></div>
